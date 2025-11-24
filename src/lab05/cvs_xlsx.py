@@ -67,11 +67,11 @@ current_directory = Path(__file__).parent.parent
 root_directory = current_directory.parent
 
 # ok
-# csv_to_xlsx(f'{root_directory}/data/samples/people.csv', f'{root_directory}/data/out/people_from_csv.xlsx')
+# csv_to_xlsx(f'{root_directory}\\data\\samples\\people.csv', 
+#             f'{root_directory}\\data\\out\\people_from_csv.xlsx')
 # ValueError
-# csv_to_xlsx(f'{root_directory}/data/samples/people.json', f'{root_directory}/data/out/people_from_csv.xlsx')
+# csv_to_xlsx(f'{root_directory}\\data\\samples\\people.json', 
+# f'{root_directory}\\data\\out\\people_from_csv.xlsx')
 # FileNotFoundError
-csv_to_xlsx(
-    f"{root_directory}/data/samples/not_existed.csv",
-    f"{root_directory}/data/out/people_from_csv.xlsx",
-)
+csv_to_xlsx(f"{root_directory}\\data\\samples\\not_existed.csv",
+    f"{root_directory}\\data\\out\\people_from_csv.xlsx")

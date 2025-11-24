@@ -1,6 +1,6 @@
-city,name,age
-SPB,Alice,22
-Moscow,Bob,25
-Kazan,Carlos,30
-SPB,Dana,21
-Novosibirsk,Andrey,27
+age,name,city
+22,Alice,SPB
+25,Bob,Moscow
+30,Carlos,Kazan
+21,Dana,SPB
+27,Andrey,Novosibirsk
