@@ -1,5 +1,3 @@
-# Реализуйте функции:
-#
 # normalize(text: str, *, casefold: bool = True, yo2e: bool = True) -> str
 #     Если casefold=True — привести к casefold (лучше, чем lower для Юникода).
 #     Если yo2e=True — заменить все ё/Ё на е/Е.
@@ -21,11 +19,6 @@ def normalize(text: str, *, casefold: bool = True, yo2e: bool = True) -> str:
 
 
 # Тест-кейсы:
-
-# "ПрИвЕт\nМИр\t" → "привет мир" (casefold + схлопнуть пробелы)
-# "ёжик, Ёлка" (yo2e=True) → "ежик, елка"
-# "Hello\r\nWorld" → "hello world"
-# "  двойные   пробелы  " → "двойные пробелы"
 
 # print(normalize("ПрИвЕт\nМИр\t"))  # "привет мир"
 # print(normalize("ёжик, Ёлка"))      # "ежик, елка"
@@ -94,5 +87,5 @@ def top_n(freq: dict[str, int], n: int = 5) -> list[tuple[str, int]]:
     return sorted_items[:n]
 
 
-# print(top_n({"a":3,"b":2,"c":1}, n=2))  # [("a",3), ("b",2)]
-# print(top_n({'bb': 2, 'aa': 2, 'cc': 1}, n=2))  # [("a",3), ("b",2)]
+print(top_n({"a":3,"b":2,"c":1}, n=2))  # [("a",3), ("b",2)]
+print(top_n({'bb': 2, 'aa': 2, 'cc': 1}, n=2))  # [("a",3), ("b",2)]
