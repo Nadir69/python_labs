@@ -87,5 +87,5 @@ def top_n(freq: dict[str, int], n: int = 5) -> list[tuple[str, int]]:
     return sorted_items[:n]
 
 
-print(top_n({"a":3,"b":2,"c":1}, n=2))  # [("a",3), ("b",2)]
-print(top_n({'bb': 2, 'aa': 2, 'cc': 1}, n=2))  # [("a",3), ("b",2)]
+# print(top_n({"a":3,"b":2,"c":1}, n=2))  # [("a",3), ("b",2)]
+# print(top_n({'bb': 2, 'aa': 2, 'cc': 1}, n=2))  # [("a",3), ("b",2)]

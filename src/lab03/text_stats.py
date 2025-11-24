@@ -23,7 +23,7 @@ from src.lib.text import normalize, tokenize, count_freq, top_n
 def main():
     # Чтение всего ввода до EOF
     input_text = input()
-    print("input_text: ", input_text)
+    # print("input_text: ", input_text)
 
     # Нормализация текста
     normalized_text = normalize(input_text)
