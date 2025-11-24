@@ -1,4 +1,4 @@
-# Вернуть кортеж (минимум, максимум). Если список пуст — ValueError
+
 def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
     if not nums:
         raise ValueError("Список пуст")
@@ -19,9 +19,17 @@ def flatten(mat: list[list | tuple]) -> list:
             for sub_element in element:
                 result_list.append(sub_element)
         elif type(element) == str:
-            return TypeError("строка не строка строк матрицы")
+            raise TypeError("строка не строка строк матрицы")
 
         else:
             result_list.append(element)
 
     return result_list
+
+# Тест-кейсы (минимум)
+# flatten
+
+print(flatten([[1, 2], [3, 4]]))  # [1, 2, 3, 4]
+print(flatten([[1, 2], (3, 4, 5)]))  # [1, 2, 3, 4, 5]
+print(flatten([[1], [], [2, 3]]))  # [1, 2, 3]
+print(flatten([[1, 2], "ab"]))  # TypeError («строка не строка строк матрицы»)
