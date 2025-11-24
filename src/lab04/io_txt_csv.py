@@ -21,11 +21,11 @@ def read_text(path: str | Path, encoding: str = "utf-8") -> str:
 current_directory = Path(__file__).parent.parent
 root_directory = current_directory.parent
 # ok
-# print(read_text(f"{root_directory}/data/samples/text_example.txt", encoding="utf-8"))
+# print(read_text(f"{root_directory}\\data\\samples\\text_example.txt", encoding="utf-8"))
 # FileNotFoundError
-# print(read_text(f"{root_directory}/data/samples/text_example.txt", encoding="utf-8"))
+# print(read_text(f"{root_directory}\\data\\samples\\text_not_found.txt", encoding="utf-8"))
 # UnicodeDecodeError
-# print(read_text(f"{root_directory}/data/samples/text_example.txt", encoding="cp1251"))
+# print(read_text(f"{root_directory}\\data\\samples\\text_example.txt", encoding="cp1251"))
 
 
 
@@ -59,10 +59,10 @@ def write_csv(rows: list[tuple | list], path: str | Path, header: tuple[str, ...
         writer.writerows(rows)
 # Example usage:
 # ok
-# write_csv([("word","count"),("test",3)], f"{root_directory}/data/out/check.csv")
+# write_csv([("word","count"),("test",3)], f"{root_directory}\\data\\out\\check.csv")
 # ValueError
-# write_csv([("word","count"),("test",3,4)], f"{root_directory}/data/out/check.csv")
+# write_csv([("word","count"),("test",3,4)], f"{root_directory}\\data\\out\\check.csv")
 # edge case: пустым raws С header=("a","b") → файл содержит только заголовок.
-# write_csv([], f"{root_directory}/data/out/check.csv", header=("a","b"))
+# write_csv([], f"{root_directory}\\data\\out\\check.csv", header=("a","b"))
 # с пустым rows и header=None → создаётся пустой файл (0 строк).
-# write_csv([], f"{root_directory}/data/out/check.csv")
+write_csv([], f"{root_directory}\\data\\out\\check.csv")
