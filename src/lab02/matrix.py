@@ -1,4 +1,3 @@
-# L2B1:
 def transpose(mat):
     if not mat:
         return []
@@ -11,7 +10,6 @@ def transpose(mat):
     return [list(row) for row in zip(*mat)]
 
 
-# L2B2
 def row_sums(mat):
     if not mat:
         return []
@@ -28,7 +26,7 @@ def row_sums(mat):
 
     return sums
 
-# L2B3
+
 def col_sums(mat: list[list[float | int]]) -> list[float]:
     if not mat:
         return []
@@ -44,6 +42,7 @@ def col_sums(mat: list[list[float | int]]) -> list[float]:
             sums[j] += row[j]
 
     return sums
+
 
 # Тест-кейсы (минимум)
 # col_sums

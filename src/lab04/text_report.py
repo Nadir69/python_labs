@@ -1,30 +1,3 @@
-# Напишите скрипт, который:
-#
-#     Читает один входной файл data/input.txt (путь можно захардкодить или принять параметром командной строки — опишите в README).
-#     Нормализует текст (lib/text.py), токенизирует и считает частоты слов.
-#     Сохраняет data/report.csv c колонками: word,count, отсортированными: count ↓, слово ↑ (при равенстве).
-#     В консоль печатает краткое резюме:
-#         Всего слов: <N>
-#         Уникальных слов: <K>
-#         Топ-5: (список из top_n из ЛР3)
-#
-# Пример запуска
-#
-# python src/lab04/text_report.py                 # читает data/input.txt, пишет data/report.csv
-# python src/lab04/text_report.py --in data/in.txt --out data/out.csv
-#
-# Пример report.csv
-#
-# word,count
-# привет,2
-# мир,1
-#
-# Краевые случаи
-#
-#     data/input.txt не существует → понятная ошибка в консоли (исключение пусть всплывает или выведите print() и sys.exit(1) — опишите поведение в README).
-#     Пустой вход → report.csv будет содержать только заголовок или будет пустым (примите решение и опишите — рекомендую только заголовок).
-#     Нестандартная кодировка → укажите, как передать --encoding cp1251 (если реализуете argparse).
-
 import sys
 from pathlib import Path
 import argparse
@@ -80,6 +53,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# Пример запуска
-# python src/lab04/text_report.py                 # читает data/input.txt, пишет data/report.csv

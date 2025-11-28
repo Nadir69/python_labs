@@ -1,22 +1,3 @@
-# надо написать функцию json_to_csv(json_path, csv_path)
-# надо написать функцию csv_to_json(csv_path, json_path)
-# (без вывода в stdout, только работа с файлами; валидация ошибок).
-# Требования:
-#
-# Проверка ошибок:
-#     неверный тип файла, пустой JSON или CSV → ValueError.
-#     осутствующий файл → FileNotFoundError
-# Не использовать внешние пакеты (только json, csv, pathlib).
-# Все пути относительные.
-# Кодировка — строго UTF-8.
-
-# Примеры данных в data/samples/ и артефакты конвертаций в data/out/:
-#
-# people.json ⇄ people_from_json.csv
-# people.csv ⇄ people_from_csv.json
-# people.xlsx (из любого CSV)
-
-
 import json
 import csv
 from pathlib import Path

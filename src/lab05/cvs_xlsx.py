@@ -1,17 +1,3 @@
-# надо написать функцию csv_to_xlsx(csv_path, xlsx_path)
-# (через openpyxl или xlsxwriter, авто-ширина колонок).
-# (без вывода в stdout, только работа с файлами; валидация ошибок).
-
-# Требования:
-#
-# Проверка ошибок:
-#     неверный тип файла, пустой JSON или CSV → ValueError.
-#     осутствующий файл → FileNotFoundError
-# Не использовать внешние пакеты.
-# Все пути относительные.
-# Кодировка — строго UTF-8.
-# Результат — открываемый XLSX с корректной структурой таблицы.
-
 from openpyxl import Workbook
 import csv
 from pathlib import Path

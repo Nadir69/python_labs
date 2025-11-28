@@ -1,12 +1,4 @@
-# Реализуйте (с докстрингами и типами):
-#
-# read_text(path: str | Path, encoding: str = "utf-8") -> str
-# Открыть файл на чтение (например, из data/samples/text_example.txt) в указанной кодировке и вернуть содержимое как одну строку.
-# Обрабатывать ошибки: если файл не найден — поднимать FileNotFoundError (пусть падает), если кодировка не подходит — поднимать UnicodeDecodeError (пусть падает).
-# НО: в докстринге опишите, как пользователь может выбрать другую кодировку (пример: encoding="cp1251").
-# Пустой файл → возвращается пустая строка.
-# Файл очень большой → допускается читать целиком (наше ТЗ), но в README отметить, что в реале стоит читать построчно.
-
+import csv
 from pathlib import Path
 def read_text(path: str | Path, encoding: str = "utf-8") -> str:
     """
@@ -28,13 +20,6 @@ root_directory = current_directory.parent
 # print(read_text(f"{root_directory}\\data\\samples\\text_example.txt", encoding="cp1251"))
 
 
-
-# write_csv(rows: list[tuple | list], path: str | Path, header: tuple[str, ...] | None = None) -> None
-#
-# Создать/перезаписать CSV с разделителем ,.
-# Если передан header, записать его первой строкой.
-# Проверить, что каждая строка в rows имеет одинаковую длину (иначе ValueError).
-import csv
 def write_csv(rows: list[tuple | list], path: str | Path, header: tuple[str, ...] | None = None) -> None:
     """
     Создаёт/перезаписывает CSV с разделителем ,.
@@ -57,6 +42,7 @@ def write_csv(rows: list[tuple | list], path: str | Path, header: tuple[str, ...
         if header:
             writer.writerow(header)
         writer.writerows(rows)
+
 # Example usage:
 # ok
 # write_csv([("word","count"),("test",3)], f"{root_directory}\\data\\out\\check.csv")
