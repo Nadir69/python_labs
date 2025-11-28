@@ -6,4 +6,4 @@
 ## Требования
 - Python 3.7 и выше
 - Библиотека openpyxl
-- 
+![](../../images/lab02/img01.PNG)
