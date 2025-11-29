@@ -26,10 +26,13 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
     Кодировка — строго UTF-8.
 ```
 ![](../../images/lab05/img01.PNG)
+![](../../images/lab05/img01_1.PNG)
 ![](../../images/lab05/img02.PNG)
 ![](../../images/lab05/img03.PNG)
 ![](../../images/lab05/img04.PNG)
+![](../../images/lab05/img04_1.PNG)
 ![](../../images/lab05/img05.PNG)
+
 
 ## Задание B — CSV → XLSX
 ```
