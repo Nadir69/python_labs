@@ -63,11 +63,9 @@ B. Тесты для src/lab05/json_csv.py
 ![](../../images/lab07/img03.PNG)
 ```
 Тестами не покрыты следующие строки кода:
-
-src/lab05/cvs_xlsx.py                 30     30     0%   15-74
-src/lab05/json_csv.py                 37      2    95%   53, 92
-src/lab06/__init__.py                  0      0   100%
-src/lab06/cli_convert.py              25     25     0%   1-36
-src/lab06/cli_text.py                 33     33     0%   1-51
-src/lab07/tests/test_json_csv.py      66      4    94%   35, 46, 73, 85
+src\lab05\cvs_xlsx.py                 30     30     0%   1-53
+src\lab05\json_csv.py                 37      2    95%   34, 73
+src\lab06\cli_convert.py              25     25     0%   1-36
+src\lab06\cli_text.py                 33     33     0%   1-51
+src\lab07\tests\test_json_csv.py      66      4    94%   35, 46, 73, 85
 ```
