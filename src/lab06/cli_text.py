@@ -52,14 +52,14 @@ if __name__ == "__main__":
 
 
 # python src/lab06/cli_text.py cat --input data/samples/people.csv
-# ~/projects/python_labs$ python src/lab06/cli_text.py cat --input data/samples/people.csv -n
+# python src/lab06/cli_text.py cat --input data/samples/people.csv -n
 # 1       name,age,city
 # 2       Alice,22,SPB
 # 3       Bob,25,Moscow
 # 4       Carlos,30,Kazan
 # 5       Dana,21,SPB
 # 6       Andrey,27,Novosibirsk
-# ~/projects/python_labs$ python src/lab06/cli_text.py cat --input data/samples/people.csv
+# python src/lab06/cli_text.py cat --input data/samples/people.csv
 # name,age,city
 # Alice,22,SPB
 # Bob,25,Moscow

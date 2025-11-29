@@ -24,8 +24,8 @@ students = [
     Student(fio="Иванов Иван Иванович", birthdate="2000-01-15", group="SE-01", gpa=4.5),
     Student(fio="Петров Петр Петрович", birthdate="1999-05-20", group="SE-02", gpa=3.8),
 ]
-students_to_json(students, f"{root_directory}\\src\\lab08\\students_output.json")
+students_to_json(students, f"{root_directory}\\data\\lab08\\students_output.json")
 
-loaded_students = students_from_json(f"{root_directory}\\src\\lab08\\students_input.json")
+loaded_students = students_from_json(f"{root_directory}\\data\\lab08\\students_input.json")
 for student in loaded_students:
     print(student)
