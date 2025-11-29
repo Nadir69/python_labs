@@ -6,6 +6,12 @@ python src\lab08\serialize.py
 ```
 ![](../../images/lab08/img01.PNG)
 
+```С некоррекртным средним баллом:```
+![](../../images/lab08/img02.PNG)
+
+```С некоррекртной датой:```
+![](../../images/lab08/img03.PNG)
+
 ## примеры JSON до/после преобразования
 ![](../../images/lab08/img01.PNG)
 
