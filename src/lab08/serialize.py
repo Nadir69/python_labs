@@ -1,10 +1,3 @@
-# надо написать функции сериализации students_to_json(list[Student], path)
-# из списка моделей Student преобразует модели в словари, сохраняет список словарей в JSON на диск по указанному пути
-# по умолчанию в data.out
-
-# Также, нужна обратная функция, которая будет читать JSON-массив из файла по указанному пути, валидировать и преобразовывать его в список моделей Student.
-#     students_from_json(path) -> list[Student]
-
 import json
 from pathlib import Path
 from typing import List
@@ -25,14 +18,14 @@ def students_from_json(path: str) -> List[Student]:
 # Пример использования:
 current_directory = Path(__file__).parent.parent
 root_directory = current_directory.parent
-# students_json_output_directory = f'{root_directory}\\data\\out\\students.json'
+students_json_output_directory = f'{root_directory}\\src\\lab08\\students.json'
 
 students = [
     Student(fio="Иванов Иван Иванович", birthdate="2000-01-15", group="SE-01", gpa=4.5),
     Student(fio="Петров Петр Петрович", birthdate="1999-05-20", group="SE-02", gpa=3.8),
 ]
-students_to_json(students, "students_output.json")
+students_to_json(students, f"{root_directory}\\src\\lab08\\students_output.json")
 
-loaded_students = students_from_json("students_input.json")
+loaded_students = students_from_json(f"{root_directory}\\src\\lab08\\students_input.json")
 for student in loaded_students:
     print(student)
