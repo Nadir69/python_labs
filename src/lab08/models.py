@@ -51,4 +51,4 @@ class Student:
         )
 
     def __str__(self) -> str:
-        return f"{self.fio}, gr. {self.group}, GPA {self.gpa:.2f}"
+        return f"{self.fio}, gr. {self.group}, GPA {self.gpa:.1f}"
