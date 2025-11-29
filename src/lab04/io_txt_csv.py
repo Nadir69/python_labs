@@ -1,5 +1,7 @@
 import csv
 from pathlib import Path
+
+
 def read_text(path: str | Path, encoding: str = "utf-8") -> str:
     """
     Открывает файл на чтение в указанной кодировке и возвращает содержимое как одну строку.
@@ -8,7 +10,9 @@ def read_text(path: str | Path, encoding: str = "utf-8") -> str:
     p = Path(path)
     with p.open(mode="r", encoding=encoding) as f:
         content = f.read()
-    return content.replace('\n', ' ')
+    return content.replace("\n", " ")
+
+
 # Example usage:
 current_directory = Path(__file__).parent.parent
 root_directory = current_directory.parent
@@ -20,7 +24,9 @@ root_directory = current_directory.parent
 # print(read_text(f"{root_directory}\\data\\samples\\text_example.txt", encoding="cp1251"))
 
 
-def write_csv(rows: list[tuple | list], path: str | Path, header: tuple[str, ...] | None = None) -> None:
+def write_csv(
+    rows: list[tuple | list], path: str | Path, header: tuple[str, ...] | None = None
+) -> None:
     """
     Создаёт/перезаписывает CSV с разделителем ,.
     Если передан header, записывает его первой строкой.
@@ -37,11 +43,12 @@ def write_csv(rows: list[tuple | list], path: str | Path, header: tuple[str, ...
         if len(row) != expected_length:
             raise ValueError("Все строки должны иметь одинаковую длину")
 
-    with p.open(mode="w", encoding="utf-8", newline='') as f:
-        writer = csv.writer(f, delimiter=',')
+    with p.open(mode="w", encoding="utf-8", newline="") as f:
+        writer = csv.writer(f, delimiter=",")
         if header:
             writer.writerow(header)
         writer.writerows(rows)
+
 
 # Example usage:
 # ok

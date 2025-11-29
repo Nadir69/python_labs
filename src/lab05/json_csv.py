@@ -89,10 +89,10 @@ root_directory = current_directory.parent
 # FileNotFoundError
 # json_to_csv(f'{root_directory}\\data\\samples\\not_existing_file.json', f'{root_directory}\\data\\out\\people_from_json.csv')
 # ok
-# csv_to_json(f'{root_directory}\\data\\samples\\people.csv', 
-            # f'{root_directory}\\data\\out\\people_from_csv.json')
+# csv_to_json(f'{root_directory}\\data\\samples\\people.csv',
+# f'{root_directory}\\data\\out\\people_from_csv.json')
 # ValueError
-# csv_to_json(f'{root_directory}\\data\\samples\\people.json', 
+# csv_to_json(f'{root_directory}\\data\\samples\\people.json',
 #             f'{root_directory}\\data\\out\\people_from_csv.json')
 # FileNotFoundError
 # csv_to_json(f'{root_directory}\\data\\samples\\not_existing_file.csv',

@@ -1,5 +1,6 @@
 from src.lib.text import normalize, tokenize, count_freq, top_n
 
+
 def main():
     # Чтение всего ввода до EOF
     input_text = input()
@@ -51,6 +52,7 @@ def main():
             print("-" * (max_word_length + 10))
             for word, count in top_5:
                 print(f"{word.ljust(max_word_length)} | {count}")
+
 
 if __name__ == "__main__":
     main()

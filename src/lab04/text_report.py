@@ -4,11 +4,32 @@ import argparse
 from src.lib.text import normalize, tokenize, count_freq, top_n
 from src.lab04.io_txt_csv import read_text, write_csv
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Generate word frequency report from text file.")
-    parser.add_argument("--in", dest="input_path", type=str, default="data/input.txt", help="Path to input text file")
-    parser.add_argument("--out", dest="output_path", type=str, default="data/report.csv", help="Path to output CSV file")
-    parser.add_argument("--encoding", dest="encoding", type=str, default="utf-8", help="File encoding (default: utf-8)")
+    parser = argparse.ArgumentParser(
+        description="Generate word frequency report from text file."
+    )
+    parser.add_argument(
+        "--in",
+        dest="input_path",
+        type=str,
+        default="data/input.txt",
+        help="Path to input text file",
+    )
+    parser.add_argument(
+        "--out",
+        dest="output_path",
+        type=str,
+        default="data/report.csv",
+        help="Path to output CSV file",
+    )
+    parser.add_argument(
+        "--encoding",
+        dest="encoding",
+        type=str,
+        default="utf-8",
+        help="File encoding (default: utf-8)",
+    )
     args = parser.parse_args()
 
     input_path = Path(args.input_path)
@@ -50,6 +71,7 @@ def main():
     except UnicodeDecodeError:
         print(f"Error: Cannot decode file '{input_path}' with encoding '{encoding}'.")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
