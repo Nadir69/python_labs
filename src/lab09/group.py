@@ -1,31 +1,3 @@
-# CRUD — стандартный набор операций:
-# Операция 	Назначение
-# Create 	Добавление записи
-# Read 	Получение списка / поиск
-# Update 	Изменение существующей записи
-# Delete 	Удаление
-
-# описание класса Group:
-#
-#     поля (атрибуты экземпляра):
-#         path — путь к CSV-файлу с данными студентов
-#
-#     методы:
-#         __init__(storage_path) — инициализация группы и файла-хранилища
-#         list() — вернуть всех студентов в виде списка Student
-#         add(student) — добавить нового студента в CSV
-#         find(substr) — найти студентов по подстроке в fio
-#         remove(fio) — удалить запись(и) с данным fio
-#         update(fio, **fields) — обновить поля существующего студента
-#
-#     внутренние вспомогательные методы (опционально):
-#         _read_all() — прочитать все строки из CSV
-#         _ensure_storage_exists() — создать файл с заголовком, если его ещё нет
-#
-#     валидация:
-#         наличие строки-заголовка в CSV (fio,birthdate,group,gpa)
-#         соответствие каждой строки корректному объекту Student
-
 import csv
 from pathlib import Path
 from typing import List
@@ -65,8 +37,6 @@ class Group:
 
     def add(self, student: Student) -> None:
         with self.path.open(mode="a", encoding="utf-8", newline="") as f:
-            # writer = csv.DictWriter(f, fieldnames=self.HEADER)
-            # writer.writerow(student.to_dict())
             writer = csv.writer(f)
             writer.writerow([student.fio, student.birthdate, student.group, student.gpa])
 
@@ -97,30 +67,63 @@ class Group:
             for student in students:
                 writer.writerow([student.fio, student.birthdate, student.group, student.gpa])
 
+    def stats(self) -> dict:
+        students = self._read_all()
+        if not students:
+            return {
+                "count": 0,
+                "min_gpa": None,
+                "max_gpa": None,
+                "avg_gpa": None,
+                "groups": {},
+                "top_5_students": [],
+            }
+
+        count = len(students)
+        gpas = [student.gpa for student in students]
+        min_gpa = min(gpas)
+        max_gpa = max(gpas)
+        avg_gpa = sum(gpas) / count
+
+        groups = {}
+        for student in students:
+            groups[student.group] = groups.get(student.group, 0) + 1
+
+        top_5_students = sorted(students, key=lambda s: s.gpa, reverse=True)[:5]
+        top_5_students = [{"fio": student.fio, "gpa": student.gpa} for student in top_5_students]
+
+        return {
+            "count": count,
+            "min_gpa": min_gpa,
+            "max_gpa": max_gpa,
+            "avg_gpa": avg_gpa,
+            "groups": groups,
+            "top_5_students": top_5_students,
+        }
 # Пример использования:
-if __name__ == "__main__":
-    current_directory = Path(__file__).parent.parent
-    root_directory = current_directory.parent
-    group = Group(f"{root_directory}\\data\\lab09\\students.csv")
-
-    # Добавление студентов
-    student1 = Student(fio="Иванов Иван Иванович", birthdate="2000-01-15", group="SE-01", gpa=4.5)
-    student2 = Student(fio="Петров Петр Петрович", birthdate="1999-05-20", group="SE-02", gpa=3.8)
-    group.add(student1)
-    group.add(student2)
-
-    # Вывод всех студентов
-    all_students = group.list()
-    for student in all_students:
-        print(student)
-
-    # Поиск студентов по подстроке в fio
-    found_students = group.find("Иванов")
-    for student in found_students:
-        print("Найден:", student)
-
-    # Обновление студента
-    group.update("Иванов Иван Иванович", gpa=5.0)
-
-    # Удаление студента
-    group.remove("Петров Петр Петрович")
+# if __name__ == "__main__":
+#     current_directory = Path(__file__).parent.parent
+#     root_directory = current_directory.parent
+#     group = Group(f"{root_directory}\\data\\lab09\\students.csv")
+#
+#     # Добавление студентов
+#     student1 = Student(fio="Иванов Иван Иванович", birthdate="2000-01-15", group="SE-01", gpa=4.5)
+#     student2 = Student(fio="Петров Петр Петрович", birthdate="1999-05-20", group="SE-02", gpa=3.8)
+#     group.add(student1)
+#     group.add(student2)
+#
+#     # Вывод всех студентов
+#     all_students = group.list()
+#     for student in all_students:
+#         print(student)
+#
+#     # Поиск студентов по подстроке в fio
+#     found_students = group.find("Иванов")
+#     for student in found_students:
+#         print("Найден:", student)
+#
+#     # Обновление студента
+#     group.update("Иванов Иван Иванович", gpa=5.0)
+#
+#     # Удаление студента
+#     group.remove("Петров Петр Петрович")
