@@ -1,7 +1,4 @@
-# Нужно реализовать два класса: Stack
-# class Stack
-
-from typing import Any, Iterator
+from typing import Any
 
 
 class Stack:
@@ -53,33 +50,6 @@ class Stack:
 
 
 
-# Нужно реализовать класс: Queue
-# class Queue
-#
-# Назначение: структура данных «очередь» (FIFO) на базе collections.deque.
-#
-# Атрибуты:
-#
-#     self._data: deque[Any] — двусторонняя очередь из collections.deque.
-#     Семантика: голова очереди — левый край структуры, dequeue берёт элементы слева.
-#
-# Методы (минимум):
-#
-#     enqueue(item) -> None
-#     Добавить элемент в конец очереди.
-#
-#     dequeue() -> Any
-#     Взять элемент из начала очереди и вернуть его.
-#     Если очередь пустая — выбросить понятное исключение (например, IndexError).
-#
-#     peek() -> Any | None
-#     Вернуть первый элемент без удаления.
-#     Если очередь пустая — вернуть None (или бросить исключение, но это нужно явно описать).
-#
-#     is_empty() -> bool
-#     Вернуть True, если очередь пуста.
-#
-#     (опционально) __len__(self) -> int — количество элементов в очереди.
 
 from collections import deque
 class Queue:
@@ -116,18 +86,18 @@ class Queue:
 
 
 # Пример использования:
-queue = Queue()
-queue.enqueue(1)
-queue.enqueue(2)
-print(queue.peek())     # Выведет: 1
-queue.enqueue(3)
-print(queue.peek())     # Выведет: 1
-queue.enqueue(2)
-print(queue.dequeue())  # Выведет: 1
-print(queue.peek())     # Выведет: 2
-print(queue.is_empty()) # Выведет: False
-print(len(queue))      # Выведет: 3
-queue.dequeue()
-queue.dequeue()
-queue.dequeue()
-queue.dequeue() # Выбросит IndexError: dequeue from empty queue
+# queue = Queue()
+# queue.enqueue(1)
+# queue.enqueue(2)
+# print(queue.peek())     # Выведет: 1
+# queue.enqueue(3)
+# print(queue.peek())     # Выведет: 1
+# queue.enqueue(2)
+# print(queue.dequeue())  # Выведет: 1
+# print(queue.peek())     # Выведет: 2
+# print(queue.is_empty()) # Выведет: False
+# print(len(queue))      # Выведет: 3
+# queue.dequeue()
+# queue.dequeue()
+# queue.dequeue()
+# queue.dequeue() # Выбросит IndexError: dequeue from empty queue

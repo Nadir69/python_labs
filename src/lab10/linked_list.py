@@ -1,58 +1,10 @@
-# Нужно реализовать односвязный список и его узел.
-# class Node
-#
-# Назначение: узел односвязного списка.
-#
-# Атрибуты:
-#
-#     self.value: Any — значение элемента.
-#     self.next: Node | None — ссылка на следующий узел или None, если это последний узел.
-
 from typing import Any, Optional
 class Node:
     def __init__(self, value: Any) -> None:
         self.value: Any = value
         self.next: Optional[Node] = None
 
-# Нужно реализовать class SinglyLinkedList
-#
-# Назначение: односвязный список, состоящий из узлов Node.
-#
-# Атрибуты:
-#
-#     self.head: Node | None — голова списка (первый элемент) или None, если список пуст.
-#     (опционально) self.tail: Node | None — хвост списка (последний элемент) для ускорения append.
-#     self._size: int — количество элементов в списке.
-#
-# Методы (минимум):
-#
-#     append(value) -> None
-#     Добавить элемент в конец списка.
-#     При наличии tail — за O(1), без него — допустимо O(n) проходом от head.
-#
-#     prepend(value) -> None
-#     Добавить элемент в начало списка за O(1).
-#
-#     insert(idx: int, value) -> None
-#     Вставить элемент по индексу idx.
-#     Требования:
-#         допускается вставка в начало (idx == 0) и в конец (idx == len(list));
-#         при индексе вне диапазона [0, len(list)] — выбросить IndexError.
-#
-#     remove(value) -> None или remove_at(idx: int) -> None
-#     На выбор:
-#         либо удалить первое вхождение значения value (если нет — можно ничего не делать или бросать исключение, задокументировав поведение);
-#         либо удалить элемент по индексу idx (при некорректном индексе — IndexError).
-#
-#     __iter__(self)
-#     Возвращает итератор по значениям в списке (в порядке от головы к хвосту).
-#
-#     __len__(self) -> int
-#     Возвращает количество элементов (self._size).
-#
-#     __repr__(self) -> str
-#     Возвращает строковое представление, например:
-#     SinglyLinkedList([1, 2, 3]).
+
 class SinglyLinkedList:
     def __init__(self) -> None:
         self.head: Optional[Node] = None
@@ -133,17 +85,17 @@ class SinglyLinkedList:
 
 
 # Пример использования:
-sll = SinglyLinkedList()
-sll.append(1)
-print(sll)
-sll.append(2)
-print(sll)
-sll.prepend(0)
-print(sll)
-sll.insert(1, 0.5)  # Список теперь: 0, 0.5, 1, 2
-print(sll)
-sll.remove_at(2)  # Список теперь: 0, 0.5, 2
-print(sll)
-print(len(sll))  # Выведет: 3
-sll.remove_at(2)
-sll.remove_at(2) # Выведет IndexError: Index out of range
+# sll = SinglyLinkedList()
+# sll.append(1)
+# print(sll)
+# sll.append(2)
+# print(sll)
+# sll.prepend(0)
+# print(sll)
+# sll.insert(1, 0.5)  # Список теперь: 0, 0.5, 1, 2
+# print(sll)
+# sll.remove_at(2)  # Список теперь: 0, 0.5, 2
+# print(sll)
+# print(len(sll))  # Выведет: 3
+# sll.remove_at(2)
+# sll.remove_at(2) # Выведет IndexError: Index out of range

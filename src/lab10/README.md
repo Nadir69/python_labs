@@ -27,6 +27,42 @@
         только с одного конца структуры — верхушки стека. Доступ к элементам, находящимся ниже 
         верхнего элемента, невозможен без предварительного удаления всех элементов, находящихся 
         выше них.
+### Реализация:
+```
+class Stack:
+    def __init__(self) -> None:
+        self._data: list[Any] = []
+
+    def push(self, item: Any) -> None:
+        """Добавить элемент на вершину стека."""
+        self._data.append(item)
+
+    def pop(self) -> Any:
+        """Снять верхний элемент стека и вернуть его.
+        Если стек пуст — выбросить понятное исключение (например, IndexError с вменяемым сообщением).
+        """
+        if self.is_empty():
+            raise IndexError("pop from empty stack")
+        return self._data.pop()
+
+    def peek(self) -> Any | None:
+        """Вернуть верхний элемент без удаления.
+        Если стек пуст — вернуть None.
+        """
+        if self.is_empty():
+            return None
+        return self._data[-1]
+
+    def is_empty(self) -> bool:
+        """Вернуть True, если стек пуст, иначе False."""
+        return len(self._data) == 0
+
+    def __len__(self) -> int:
+        """Количество элементов в стеке."""
+        return len(self._data)
+```
+Пример использования:
+![](../../images/lab10/img01.PNG)
 
 ### Очередь (Queue)
 
@@ -60,6 +96,44 @@
         и извлекать только из начала. Доступ к элементам, находящимся в середине очереди, невозможен 
         без предварительного удаления всех элементов, находящихся перед ними
 
+### Реализация:
+```
+from collections import deque
+class Queue:
+    def __init__(self) -> None:
+        self._data: deque[Any] = deque()
+
+    def enqueue(self, item: Any) -> None:
+        """Добавить элемент в конец очереди."""
+        self._data.append(item)
+
+    def dequeue(self) -> Any:
+        """Взять элемент из начала очереди и вернуть его.
+        Если очередь пустая — выбросить понятное исключение (например, IndexError).
+        """
+        if self.is_empty():
+            raise IndexError("dequeue from empty queue")
+        return self._data.popleft()
+
+    def peek(self) -> Any | None:
+        """Вернуть первый элемент без удаления.
+        Если очередь пустая — вернуть None.
+        """
+        if self.is_empty():
+            return None
+        return self._data[0]
+
+    def is_empty(self) -> bool:
+        """Вернуть True, если очередь пуста."""
+        return len(self._data) == 0
+
+    def __len__(self) -> int:
+        """Количество элементов в очереди."""
+        return len(self._data)
+```
+Пример использования:
+![](../../images/lab10/img02.PNG)
+
 ### Односвязный список (Singly Linked List)
 
     Структура:
@@ -91,3 +165,93 @@
             при наличии tail — O(1),
             без tail — O(n), т.к. требуется пройти до конца;
         поиск по значению — O(n).
+
+### Реализация:
+```
+from typing import Any, Optional
+class Node:
+    def __init__(self, value: Any) -> None:
+        self.value: Any = value
+        self.next: Optional[Node] = None
+
+
+class SinglyLinkedList:
+    def __init__(self) -> None:
+        self.head: Optional[Node] = None
+        self.tail: Optional[Node] = None
+        self._size: int = 0
+
+    def append(self, value: Any) -> None:
+        """Добавить элемент в конец списка."""
+        new_node = Node(value)
+        if self.tail:
+            self.tail.next = new_node
+        else:
+            self.head = new_node
+        self.tail = new_node
+        self._size += 1
+
+    def prepend(self, value: Any) -> None:
+        """Добавить элемент в начало списка."""
+        new_node = Node(value)
+        new_node.next = self.head
+        self.head = new_node
+        if self._size == 0:
+            self.tail = new_node
+        self._size += 1
+
+    def insert(self, idx: int, value: Any) -> None:
+        """Вставить элемент по индексу idx."""
+        if idx < 0 or idx > self._size:
+            raise IndexError("Index out of range")
+        if idx == 0:
+            self.prepend(value)
+            return
+        if idx == self._size:
+            self.append(value)
+            return
+        new_node = Node(value)
+        current = self.head
+        for _ in range(idx - 1):
+            current = current.next  # type: ignore
+        new_node.next = current.next  # type: ignore
+        current.next = new_node  # type: ignore
+        self._size += 1
+
+    def remove_at(self, idx: int) -> None:
+        """Удалить элемент по индексу idx."""
+        if idx < 0 or idx >= self._size:
+            raise IndexError("Index out of range")
+        if idx == 0:
+            if self.head:
+                self.head = self.head.next
+                if self._size == 1:
+                    self.tail = None
+            self._size -= 1
+            return
+        current = self.head
+        for _ in range(idx - 1):
+            current = current.next  # type: ignore
+        if current.next:
+            current.next = current.next.next
+            if idx == self._size - 1:
+                self.tail = current
+        self._size -= 1
+
+    def __iter__(self):
+        """Возвращает итератор по значениям в списке."""
+        current = self.head
+        while current:
+            yield current.value
+            current = current.next
+
+    def __len__(self) -> int:
+        """Возвращает количество элементов в списке."""
+        return self._size
+
+    def __repr__(self) -> str:
+        """Возвращает строковое представление списка."""
+        return str(list(self))
+```
+Пример использования:
+![](../../images/lab10/img03.PNG)
