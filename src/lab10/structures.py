@@ -101,3 +101,27 @@ class Queue:
 # queue.dequeue()
 # queue.dequeue()
 # queue.dequeue() # Выбросит IndexError: dequeue from empty queue
+
+import timeit
+
+stack = Stack()
+queue = Queue()
+
+# Measure stack push
+print("Stack push:", timeit.timeit(lambda: stack.push(1), number=100000))
+
+# Measure stack pop
+stack.push(1)
+print("Stack pop:", timeit.timeit(lambda: stack.pop(), number=100000))
+
+# Measure queue enqueue
+print("Queue enqueue:", timeit.timeit(lambda: queue.enqueue(1), number=100000))
+
+# Measure queue dequeue
+queue.enqueue(1)
+print("Queue dequeue:", timeit.timeit(lambda: queue.dequeue(), number=100000))
+
+# Stack push: 0.003658958999949391
+# Stack pop: 0.006326333000288287
+# Queue enqueue: 0.004075875000125961
+# Queue dequeue: 0.0061863749997428386

@@ -99,3 +99,25 @@ class SinglyLinkedList:
 # print(len(sll))  # Выведет: 3
 # sll.remove_at(2)
 # sll.remove_at(2) # Выведет IndexError: Index out of range
+
+import timeit
+
+sll = SinglyLinkedList()
+
+# Measure append
+print("append:", timeit.timeit(lambda: sll.append(1), number=100000))
+
+# Measure prepend
+print("prepend:", timeit.timeit(lambda: sll.prepend(1), number=100000))
+
+# Measure insert at middle
+print("insert:", timeit.timeit(lambda: sll.insert(len(sll)//2, 1), number=1000))
+
+# Measure remove_at at middle
+sll.append(1)
+print("remove_at:", timeit.timeit(lambda: sll.remove_at(len(sll)//2), number=1000))
+
+# append: 0.011709542000062356
+# prepend: 0.010960833000353887
+# insert: 0.8843176659993333
+# remove_at: 0.9309519999997065

@@ -63,6 +63,7 @@ class Stack:
 ```
 Пример использования:
 ![](../../images/lab10/img01.PNG)
+![](../../images/lab10/img05.PNG)
 
 ### Очередь (Queue)
 
@@ -133,6 +134,7 @@ class Queue:
 ```
 Пример использования:
 ![](../../images/lab10/img02.PNG)
+![](../../images/lab10/img04.PNG)
 
 ### Односвязный список (Singly Linked List)
 
@@ -255,3 +257,57 @@ class SinglyLinkedList:
 ```
 Пример использования:
 ![](../../images/lab10/img03.PNG)
+![](../../images/lab10/img06.PNG)
+
+## Производительность и бенчмарки:
+
+Для оценки производительности различных структур данных и операций над ними можно использовать модуль timeit в Python. 
+Он позволяет измерить время выполнения небольших фрагментов кода.
+Пример бенчмарка для сравнения операций добавления и удаления элементов в список, стек и очередь.
+### Бенчмарк для стека и очереди:
+```
+import timeit
+
+stack = Stack()
+queue = Queue()
+
+# Measure stack push
+print("Stack push:", timeit.timeit(lambda: stack.push(1), number=100000))
+
+# Measure stack pop
+stack.push(1)
+print("Stack pop:", timeit.timeit(lambda: stack.pop(), number=100000))
+
+# Measure queue enqueue
+print("Queue enqueue:", timeit.timeit(lambda: queue.enqueue(1), number=100000))
+
+# Measure queue dequeue
+queue.enqueue(1)
+print("Queue dequeue:", timeit.timeit(lambda: queue.dequeue(), number=100000))
+```
+![](../../images/lab10/img07.PNG)
+
+### Бенчмарк для односвязного списка:
+```
+sll = SinglyLinkedList()
+
+# Measure append
+print("append:", timeit.timeit(lambda: sll.append(1), number=100000))
+
+# Measure prepend
+print("prepend:", timeit.timeit(lambda: sll.prepend(1), number=100000))
+
+# Measure insert at middle
+print("insert:", timeit.timeit(lambda: sll.insert(len(sll)//2, 1), number=1000))
+
+# Measure remove_at at middle
+sll.append(1)
+print("remove_at:", timeit.timeit(lambda: sll.remove_at(len(sll)//2), number=1000))
+```
+![](../../images/lab10/img08.PNG)
+
+## Выводы:
+    Стек и очередь обеспечивают эффективные операции добавления и удаления элементов с концов.
+    Односвязный список позволяет эффективно вставлять и удалять элементы в начале и конце, 
+    но операции доступа по индексу требуют больше времени времени.
+    Выбор структуры данных должен основываться на конкретных требованиях к операциям и их частоте использования.
